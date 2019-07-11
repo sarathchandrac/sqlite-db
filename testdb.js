@@ -21,7 +21,6 @@ var db = new sqlite3.Database('serverbeat.db');
 //   });
 
   db.serialize(function() {
-    db.run("CREATE TABLE  single_signal (id INT, dt TEXT)");
     db.run(`
   CREATE TABLE IF NOT EXISTS time_series_signal(
       project_id STRING,
