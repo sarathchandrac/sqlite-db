@@ -49,6 +49,30 @@ db.run(`
   `);
 
   });
+  let insertQuery = `INSERT INTO "single_signal" VALUES ('serverbeat','two','two','one-two',1562830264,'OFF','Is On',1562830264,2),
+  ('ai-advisor','one','one','one-one',1562870264,'ON','is On',1562870264,1);
+ INSERT INTO "time_series_signal" VALUES ('serverbeat','two','two','one-two','{}',134),
+  ('dice','three','three','one-three','{}',145);`;
+
+
+  db.run(`
+      INSERT INTO "time_series_signal" VALUES ('dice','three','three','one-three','{}',145);
+  `);
+
+  db.run(`
+
+    INSERT INTO "single_signal" VALUES ('serverbeat','two','two','one-two',1562830264,'OFF','Is On',1562830264,2),
+    ('ai-advisor','one','one','one-one',1562870264,'ON','is On',1562870264,1);
+  `);
+
+  db.get('select count(project_id) from single_signal', [], (err, result) => {  
+    if (err) {
+      console.log(err)
+    } else {
+      console.log("result is --> ", JSON.stringify(result));
+    }
+  })
+
 
 
 
